@@ -13,14 +13,17 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+// 
 public class GameScreen extends JComponent {
 
+    // text for the game score
     private JLabel gameScore;
 
     public GameScreen(JFrame parent) {
+        setVisible(false);
         setSize(parent.getSize());
 
-        // score text
+        // create score text
         {
             gameScore = new JLabel("Score: ");
             gameScore.setBounds(32*18, 200, parent.getWidth(), 200);
@@ -31,20 +34,14 @@ public class GameScreen extends JComponent {
             add(gameScore);
         }
 
-        setVisible(false);
+        // add the screen to the parent
         parent.add(this);
     }
 
+    // updates the score label
     public void setScore(int score) {
         gameScore.setText(
             String.format("Score: %d", score)
         );
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-
-        // drawing logic
     }
 }

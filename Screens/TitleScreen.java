@@ -14,8 +14,15 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+// 
 public class TitleScreen extends JComponent {
 
+    /** 
+     * Create the title screen
+     * 
+     * @param parent Container to hold this screen
+     * @param actionListener 
+     */
     public TitleScreen(JFrame parent, ActionListener actionListener) {
         setSize(parent.getSize());
 
@@ -42,6 +49,7 @@ public class TitleScreen extends JComponent {
             add(startButton);
         }
 
+        // add the screen to the parent
         parent.add(this);
     }
 }
