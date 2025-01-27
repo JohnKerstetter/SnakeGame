@@ -14,7 +14,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-// 
 public class TitleScreen extends JComponent {
 
     /** 

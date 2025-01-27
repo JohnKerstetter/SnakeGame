@@ -9,13 +9,16 @@ import Screens.GameScreen;
 import Screens.TitleScreen;
 
 public class SnakeGame {
+
     // window size
     public static final int WINDOW_WIDTH = 800;
     public static final int WINDOW_HEIGHT = 600;
 
+    // screens
     public static TitleScreen titleScreen;
     public static GameScreen gameScreen;
 
+    // main method
     public static void main(String[] args) {
 
         // setup game window
