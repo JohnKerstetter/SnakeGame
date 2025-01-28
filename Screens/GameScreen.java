@@ -1,47 +1,38 @@
-// Name: 
-// Class: CS 240
-// Assignment: 
-// File: SnakeGame.java
+    package Screens;
 
-package Screens;
+    import java.awt.*;
+    import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-// 
-public class GameScreen extends JComponent {
-
-    // text for the game score
-    private JLabel gameScore;
-
-    public GameScreen(JFrame parent) {
-        setVisible(false);
-        setSize(parent.getSize());
-
-        // create score text
-        {
-            gameScore = new JLabel("Score: ");
-            gameScore.setBounds(32*18, 200, parent.getWidth(), 200);
-            gameScore.setFont(new Font("SansSerif", Font.BOLD, 48));
-            gameScore.setForeground(Color.DARK_GRAY);
-            gameScore.setHorizontalAlignment(JLabel.CENTER);
+    public class GameScreen extends JPanel {
+    private Snake snake; // Reference to the snake object
             
-            add(gameScore);
+        // Constructor for GameScreen
+        public GameScreen(JFrame window) {
+            this.setBounds(0, 0, 800, 800);
+            this.setBackground(Color.WHITE); // Set background color of the JPanel
         }
+        
+        public void addSnakeSegment(int x, int y) {
+            snake = new Snake(); // Starting at (10, 10)
+            snake.addHead(11, 10); // Adding a second segment for better visualization
+            this.snake = snake;
+            paintComponent(getGraphics());
+            }
+             
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Set background color for better visibility
+                Snake current = snake;
+                // Draw the snake
+                g.setColor(new Color(0, 100, 0)); // Snake color
+                while (current != null) {
+                    g.fillRect(40, 40, 40, 40); // Each segment is a 10x10 pixel square
+            }// end of while loop
+        }// end of paintComponent
 
-        // add the screen to the parent
-        parent.add(this);
-    }
+    
 
-    // updates the score label
-    public void setScore(int score) {
-        gameScore.setText(
-            String.format("Score: %d", score)
-        );
-    }
-}
+}// end of class
+    
+
