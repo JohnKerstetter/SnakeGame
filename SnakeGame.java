@@ -9,9 +9,9 @@ import Screens.GameScreen;
 import Screens.Snake;
 import Screens.TitleScreen;
 import javax.swing.*;
+import Objects.Fruit;
 
 public class SnakeGame {
-
     // window size
     public static final int WINDOW_WIDTH = 800;
     public static final int WINDOW_HEIGHT = 800;
@@ -19,21 +19,31 @@ public class SnakeGame {
     // screens
     public static TitleScreen titleScreen;
     public static GameScreen gameScreen;
-    //public static Snake snake;
+
+    // game objects
     public static Snake snake;
+    public static Fruit fruit;
+
     boolean gameRunning = true;
+
+    // main method
     public static void main(String[] args) {
+
+        // create window
         JFrame window = new JFrame("Snake Game");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         window.setLayout(null);
+    
+        // initialize game objects
+        snake = new Snake();
+        fruit = new Fruit();
 
         // Initialize titleScreen and gameScreen
         titleScreen = new TitleScreen(window, event -> {
             startButtonClicked(window);
         });
-        gameScreen = new GameScreen(window);
-        Snake snake = new Snake();
+        gameScreen = new GameScreen(window, snake, fruit);
 
         // Set bounds for titleScreen and gameScreen
         titleScreen.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -42,15 +52,15 @@ public class SnakeGame {
         // Add title screen first
         window.add(titleScreen);
         window.add(gameScreen);
+
         gameScreen.setVisible(false); // Hide game screen initially
         window.setVisible(true); // Show the window after components are added
 
         // Example game loop with a simple condition to break
         
- 
         System.out.println("end");
     }
-
+    
     private static void startButtonClicked(JFrame parent) {
         titleScreen.setVisible(false);
         gameScreen.setVisible(true);
