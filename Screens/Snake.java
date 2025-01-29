@@ -89,32 +89,24 @@ public class Snake {
 
         // Case to handle one segment in the snake
         if (head == null || head.next == null) {
-
             head = null;
             tail = null;
-
         } else {
-
             // Traverse the list to find the second to last node
             Node current = head;
             while (current.next != null && current.next.next != null) {current = current.next;}
-
             // Update the tail to be the second to last node
             tail = current;
             // Remove the reference to the last node
             tail.next = null;
-
         }// end of if/else statement
-    }
+    }// end of removeTail method
 
     // Getter method for head, used for testing and collision
     public int[] getHeadPosition() {
-
         // Check to handle the case where head might be null
         if (head == null) {throw new IllegalStateException("Snake has no head!");}
-        
         return new int[] {head.x, head.y};
-
     }// end of getHeadPosition
 
     // Returns the length of the snake (# of nodes in the list)
@@ -122,13 +114,10 @@ public class Snake {
 
         int count = 0;
         Node current = head;
-
         // Traverse the list and increment the counter
         while (current != null) {
-
             count++;
             current = current.next;
-
         }// end of while loop
 
         return count;
@@ -142,26 +131,19 @@ public class Snake {
         Node current = head.next; // Skip head
 
         while (current != null) {
-
             // Checks if the head's position matches any segment in the body
             if (head.x == current.x && head.y == current.y) {return true;} // Collision detected
-
             current = current.next; // Move to the next node
-
-        }
-
+        }// end of while loop
         return false; // No collision detected
-
-    }
+    }// end of checkSnakeCollision method
 
     // Checks if the snake has collided with a wall
     public boolean checkWallCollision(int gridWidth, int gridHeight) {
 
         if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight) {return true;} // Collision detected
-
         return false; // No collision detected
-
-    }
+    }// end of checkWallCollision method
     
     // Combines collision checks into one method
     public boolean checkCollision(int gridWidth, int gridHeight) {return checkSnakeCollision() || checkWallCollision(gridWidth, gridHeight);}

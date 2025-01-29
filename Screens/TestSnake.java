@@ -12,7 +12,7 @@ public class TestSnake {
 
         // Test 1: Constructor initializes the snake at the correct position
         System.out.println("Testing Constructor...");
-        Snake snake = new Snake();
+        Snake snake = new Snake(5, 5);
         // Get the head position
         int [] headPosition = snake.getHeadPosition();
         System.out.println("Initial Head: " + java.util.Arrays.toString(headPosition));
@@ -81,6 +81,5 @@ public class TestSnake {
         // Case for fail
         else {System.err.println("Error: Expected length of 2 and position of [0, 0]");}
         System.out.println("Test 6 passed: " + test6);
-
-    }
-}
+    }// end of main method
+}// end of TestSnake class
